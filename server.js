@@ -76,9 +76,9 @@ passport.deserializeUser((user, done) => {
 
 passport.use(new SteamStrategy({
 
-        returnURL: 'http://localhost:3000/auth/steam/return',
+        returnURL: 'https://multiwars-site.onrender.com/auth/steam/return',
 
-        realm: 'http://localhost:3000/',
+        realm: 'https://multiwars-site.onrender.com/',
 
         apiKey: process.env.STEAM_API_KEY
 
