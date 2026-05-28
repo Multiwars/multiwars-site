@@ -1,3 +1,4 @@
+```js
 require('dotenv').config();
 
 const express = require('express');
@@ -10,25 +11,7 @@ const passport = require('passport');
 
 const SteamStrategy = require('passport-steam').Strategy;
 
-const { Pool } = require('pg');
-
 const app = express();
-
-/* POSTGRESQL */
-
-const pool = new Pool({
-
-    user: 'postgres',
-
-    host: 'localhost',
-
-    database: 'multiwars',
-
-    password: 'Nsujdyj123',
-
-    port: 5432,
-
-});
 
 /* SESSION */
 
@@ -88,56 +71,13 @@ passport.use(new SteamStrategy({
 
         try {
 
-            const steamid = profile.id;
-
-            const username = profile.displayName;
-
-            const avatar = profile.photos[2].value;
-
-            /* ИЩЕМ USER */
-
-            const existingUser = await pool.query(
-
-                'SELECT * FROM users WHERE steamid = $1',
-
-                [steamid]
-
-            );
-
-            /* СОЗДАЕМ ЕСЛИ НЕТ */
-
-            if(existingUser.rows.length === 0){
-
-                await pool.query(
-
-                    `INSERT INTO users
-                    (
-                        steamid,
-                        username,
-                        avatar
-                    )
-
-                    VALUES ($1, $2, $3)`,
-
-                    [
-                        steamid,
-                        username,
-                        avatar
-                    ]
-
-                );
-
-            }
-
-            /* SESSION USER */
-
             return done(null, {
 
-                steamid,
+                steamid: profile.id,
 
-                username,
+                username: profile.displayName,
 
-                avatar
+                avatar: profile.photos[2].value
 
             });
 
@@ -222,25 +162,23 @@ app.get('/api/player', async (req, res) => {
 
     }
 
-    try {
+    res.json({
 
-        const result = await pool.query(
+        username: req.user.username,
 
-            'SELECT * FROM users WHERE steamid = $1',
+        steamid: req.user.steamid,
 
-            [req.user.steamid]
+        avatar: req.user.avatar,
 
-        );
+        kills: 0,
 
-        res.json(result.rows[0]);
+        hours: 0,
 
-    } catch(error){
+        vehicles_destroyed: 0,
 
-        console.log(error);
+        aircraft_destroyed: 0
 
-        res.status(500).send('Ошибка PostgreSQL');
-
-    }
+    });
 
 });
 
@@ -251,3 +189,4 @@ app.listen(3000, () => {
     console.log('SERVER WORKING ON 3000');
 
 });
+```
