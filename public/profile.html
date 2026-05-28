@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Multiwars Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        *{
+
+            margin:0;
+            padding:0;
+
+            box-sizing:border-box;
+        }
+
+        body{
+
+            background:#090909;
+
+            color:white;
+
+            font-family:Arial, sans-serif;
+        }
+
+        .topbar{
+
+            width:100%;
+
+            height:80px;
+
+            background:#111111;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+            padding:0 40px;
+
+            border-bottom:1px solid #1f1f1f;
+        }
+
+        .logo{
+
+            font-size:28px;
+
+            font-weight:bold;
+
+            color:#d62828;
+        }
+
+        .online{
+
+            color:#57cc99;
+
+            font-weight:bold;
+        }
+
+        .profile-wrapper{
+
+            max-width:1300px;
+
+            margin:auto;
+
+            padding:50px 30px;
+        }
+
+        .profile-header{
+
+            display:flex;
+
+            gap:40px;
+
+            align-items:center;
+
+            background:#111111;
+
+            padding:40px;
+
+            border-radius:30px;
+
+            margin-bottom:40px;
+
+            box-shadow:0 0 40px rgba(0,0,0,0.4);
+        }
+
+        .avatar{
+
+            width:180px;
+            height:180px;
+
+            border-radius:50%;
+
+            border:5px solid #d62828;
+
+            object-fit:cover;
+        }
+
+        .profile-info{
+
+            flex:1;
+        }
+
+        .nickname{
+
+            font-size:52px;
+
+            margin-bottom:15px;
+        }
+
+        .steamid{
+
+            color:#888;
+
+            margin-bottom:25px;
+        }
+
+        .rank{
+
+            display:inline-block;
+
+            padding:10px 25px;
+
+            border-radius:12px;
+
+            background:#d62828;
+
+            font-weight:bold;
+
+            margin-bottom:25px;
+        }
+
+        .rank-bar{
+
+            width:100%;
+
+            height:18px;
+
+            background:#1d1d1d;
+
+            border-radius:20px;
+
+            overflow:hidden;
+        }
+
+        .rank-progress{
+
+            height:100%;
+
+            width:70%;
+
+            background:#d62828;
+        }
+
+        .stats-grid{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit, minmax(250px, 1fr));
+
+            gap:25px;
+        }
+
+        .card{
+
+            background:#111111;
+
+            border-radius:25px;
+
+            padding:35px;
+
+            transition:0.3s;
+        }
+
+        .card:hover{
+
+            transform:translateY(-5px);
+
+            box-shadow:0 0 30px rgba(255,255,255,0.05);
+        }
+
+        .card-title{
+
+            color:#888;
+
+            margin-bottom:15px;
+
+            font-size:15px;
+        }
+
+        .card-value{
+
+            font-size:42px;
+
+            font-weight:bold;
+        }
+
+        .favorite-vehicle{
+
+            font-size:32px;
+        }
+
+        .footer-btn{
+
+            margin-top:40px;
+
+            display:inline-block;
+
+            background:#d62828;
+
+            color:white;
+
+            text-decoration:none;
+
+            padding:18px 35px;
+
+            border-radius:15px;
+
+            font-weight:bold;
+
+            transition:0.3s;
+        }
+
+        .footer-btn:hover{
+
+            background:#ff3b3b;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="topbar">
+
+        <div class="logo">
+
+            MULTIWARS
+
+        </div>
+
+        <div class="online">
+
+            ● В БОЮ: ONLINE
+
+        </div>
+
+    </div>
+
+    <div class="profile-wrapper">
+
+        <div class="profile-header">
+
+            <img class="avatar"
+                 id="avatar"
+                 src="https://avatars.cloudflare.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg">
+
+            <div class="profile-info">
+
+                <div class="nickname"
+                     id="username">
+
+                    Загрузка...
+
+                </div>
+
+                <div class="steamid"
+                     id="steamid">
+
+                    SteamID
+
+                </div>
+
+                <div class="rank"
+                     id="rank">
+
+                    РЕКРУТ
+
+                </div>
+
+                <div class="rank-bar">
+
+                    <div class="rank-progress"
+                         id="rank-progress">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    УБИЙСТВА
+
+                </div>
+
+                <div class="card-value"
+                     id="kills">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    ЧАСОВ НА СЕРВЕРЕ
+
+                </div>
+
+                <div class="card-value"
+                     id="hours">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    УНИЧТОЖЕНО ТЕХНИКИ
+
+                </div>
+
+                <div class="card-value"
+                     id="vehicles">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    УНИЧТОЖЕНО АВИАЦИИ
+
+                </div>
+
+                <div class="card-value"
+                     id="aircraft">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    ЛЮБИМАЯ ТЕХНИКА
+
+                </div>
+
+                <div class="favorite-vehicle"
+                id="favorite_vehicle">
+
+                    Не выбрано
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    ПОСЛЕДНИЙ ВХОД
+
+                </div>
+
+                <div class="card-value">
+
+                    СЕГОДНЯ
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <a class="footer-btn"
+           href="/">
+
+            НА ГЛАВНУЮ
+
+        </a>
+
+    </div>
+
+    <script>
+
+        fetch('/api/player')
+
+        .then(response => response.json())
+
+        .then(player => {
+
+            document.getElementById('username')
+            .innerText = player.username;
+
+            document.getElementById('steamid')
+            .innerText = 'SteamID: ' + player.steamid;
+
+            document.getElementById('kills')
+            .innerText = player.kills;
+
+            document.getElementById('hours')
+            .innerText = player.hours;
+
+            document.getElementById('vehicles')
+            .innerText = player.vehicles_destroyed;
+
+            document.getElementById('aircraft')
+            .innerText = player.aircraft_destroyed;
+
+            document.getElementById('favorite_vehicle')
+            .innerText = player.favorite_vehicle;
+
+            /* RANK SYSTEM */
+
+            const hours = player.hours;
+
+            let rank = 'НОВОБРАНЕЦ';
+
+            let progress = 20;
+
+            if(hours >= 10){
+
+                rank = 'РЕКРУТ';
+
+                progress = 40;
+            }
+
+            if(hours >= 50){
+
+                rank = 'СЕРЖАНТ';
+
+                progress = 65;
+            }
+
+            if(hours >= 150){
+
+                rank = 'ВЕТЕРАН';
+
+                progress = 100;
+            }
+
+            document.getElementById('rank')
+            .innerText = rank;
+
+            document.getElementById('rank-progress')
+            .style.width = progress + '%';
+
+        });
+
+    </script>
+
+</body>
+
+</html>

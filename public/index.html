@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Multiwars</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <div class="logo">
+
+                MULTIWARS
+
+            </div>
+
+            <div class="menu">
+
+                <a href="/">
+
+                    Главная
+
+                </a>
+
+                <a href="/screenshots.html">
+
+                    Скриншоты
+
+                </a>
+
+                <a href="/profile">
+
+                    Личный кабинет
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- CENTER -->
+
+        <div class="center">
+
+            <h1 class="title">
+
+                MULTIWARS
+
+            </h1>
+
+            <p class="subtitle">
+
+                ПОДКЛЮЧАЙСЯ К СРАЖЕНИЯМ
+
+            </p>
+
+            <button class="battle-btn"
+                    onclick="openModal()">
+
+                В БОЙ
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- MODAL -->
+
+    <div class="modal"
+         id="battleModal">
+
+        <div class="modal-content">
+
+            <span class="close"
+                  onclick="closeModal()">
+
+                ×
+
+            </span>
+
+            <h2>
+
+                КАК НАЧАТЬ ИГРАТЬ
+
+            </h2>
+
+            <!-- STEP 1 -->
+
+            <div class="step">
+
+                <h3>
+
+                    1. Авторизация через Steam
+
+                </h3>
+
+                <p>
+
+                    Войдите через Steam
+                    и создайте личный кабинет игрока.
+
+                </p>
+
+                <a class="steam-link"
+                   href="/auth/steam">
+
+                    <button class="steam-btn">
+
+                        ВОЙТИ ЧЕРЕЗ STEAM
+
+                    </button>
+
+                </a>
+
+            </div>
+
+            <!-- STEP 2 -->
+
+            <div class="step">
+
+                <h3>
+
+                    2. Установите Steam и Arma 3
+
+                </h3>
+
+                <p>
+
+                    Для запуска сервера нужен Steam
+                    и актуальная версия Arma 3.
+
+                </p>
+
+                <a class="steam-link"
+                   href="https://store.steampowered.com/about/"
+                   target="_blank">
+
+                    <button class="steam-btn">
+
+                        СКАЧАТЬ STEAM
+
+                    </button>
+
+                </a>
+
+            </div>
+
+            <!-- STEP 3 -->
+
+            <div class="step">
+
+                <h3>
+
+                    3. Скачайте лаунчер Multiwars
+
+                </h3>
+
+                <p>
+
+                    Лаунчер автоматически установит
+                    модификации сервера.
+
+                </p>
+
+                <a class="launcher-link"
+                   href="/downloads/MultiwarsLauncher.exe"
+                    download>
+
+                    <button class="launcher-btn">
+
+                        СКАЧАТЬ ЛАУНЧЕР
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
